@@ -1,0 +1,37 @@
+name: CI/CD Pipeline
+
+on: #chạy khi nào, khi nào chạy
+  push:
+    branches:
+      - main
+
+jobs: # danh sách những jobs chạy trong workflow
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build and Test
+        run: npm test
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Deploy to Production
+        run: |
+          # Here you would have your deployment script, e.g., using SSH to deploy the code to a server.
+          # For simplicity, we'll just print a message.
+          echo "Deployment to production environment..."
+

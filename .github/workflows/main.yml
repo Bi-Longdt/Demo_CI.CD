@@ -1,6 +1,6 @@
 name: CI/CD Pipeline
 
-on: #chạy khi nào, khi nào chạy
+on:
   push:
     branches:
       - main

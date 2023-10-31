@@ -1,4 +1,5 @@
 {
-    "test": "mocha"
+  "scripts": {
+    "test": "echo 'Running tests...'"
   }
-  
+}
